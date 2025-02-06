@@ -30,6 +30,13 @@ android {
         jvmTarget = '17'
     }
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
     buildFeatures {
         compose true
     }
@@ -45,12 +52,23 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
+                from components.release
+
                 groupId = "com.github.abhinay100"
                 artifactId = "compose-image-preview"
                 version = "1.0.0"
 
-                afterEvaluate {
-                    from components.release
+                pom {
+                    name = "compose-image-preview"
+                    description = "Your library description"
+                    url = "https://github.com/abhinay100/compose-image-preview"
+
+                    licenses {
+                        license {
+                            name = "The Apache License, Version 2.0"
+                            url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    }
                 }
             }
         }

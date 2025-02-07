@@ -54,20 +54,20 @@ afterEvaluate {
             release(MavenPublication) {
                 groupId = 'com.github.abhinay100'
                 artifactId = 'compose-image-preview'
-                version = '1.4'
+                version = '1.5'
 
                 from components.release
 
-                // Add these lines to include all necessary artifacts
-                artifact(tasks.getByName("bundleReleaseAar"))
-                artifact(tasks.getByName("sourcesJar"))
-                artifact(tasks.getByName("javadocJar"))
+                // Remove these lines since we're already generating them in the android block
+                // artifact(tasks.getByName("sourcesJar"))
+                // artifact(tasks.getByName("javadocJar"))
             }
         }
     }
 }
 
 // Add these task definitions
+/*
 tasks.register('sourcesJar', Jar) {
     archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
@@ -77,4 +77,4 @@ tasks.register('javadocJar', Jar) {
     archiveClassifier.set('javadoc')
     // Add empty javadoc to meet Maven Central's requirements
     from android.sourceSets.main.java.srcDirs
-}
+}*/

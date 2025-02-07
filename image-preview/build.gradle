@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.abhinay.image_preview'
-    compileSdk 35
+    compileSdk 34
 
     defaultConfig {
         minSdk 24
@@ -70,6 +70,12 @@ afterEvaluate {
                         }
                     }
                 }
+            }
+        }
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://jitpack.io")
             }
         }
     }
